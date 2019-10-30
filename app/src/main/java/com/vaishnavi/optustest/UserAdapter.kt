@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.vaishnavi.optustest.data.User
 
 class UserAdapter(val context : Context,val list: List<User>) : RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
 

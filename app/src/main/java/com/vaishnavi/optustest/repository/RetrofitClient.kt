@@ -1,4 +1,4 @@
-package com.vaishnavi.optustest
+package com.vaishnavi.optustest.repository
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

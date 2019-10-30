@@ -1,5 +1,6 @@
-package com.vaishnavi.optustest
+package com.vaishnavi.optustest.repository
 
+import com.vaishnavi.optustest.data.User
 import retrofit2.Call
 import retrofit2.http.GET
 

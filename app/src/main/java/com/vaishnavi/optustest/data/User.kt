@@ -1,4 +1,4 @@
-package com.vaishnavi.optustest
+package com.vaishnavi.optustest.data
 
 import androidx.room.Entity
 
