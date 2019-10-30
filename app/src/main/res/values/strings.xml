@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Optus Test</string>
+    <string name="action_settings">Settings</string>
+    <string name="name">name</string>
+    <string name="email">email</string>
+    <string name="phone">phone</string>
+</resources>
