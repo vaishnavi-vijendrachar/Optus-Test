@@ -5,14 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.vaishnavi.optustest.data.User
-import com.vaishnavi.optustest.repository.UserRepository
+import com.vaishnavi.optustest.repository.Repository
 
 
 class MainViewModel : ViewModel() {
-    lateinit var list : MutableLiveData<List<User>>
+
      fun getUserData() : LiveData<List<User>> {
-         list = MutableLiveData()
-         list = UserRepository.getUserDataFromNetwork() as MutableLiveData<List<User>>
+         var list : MutableLiveData<List<User>> = MutableLiveData()
+         list = Repository.getUserDataFromNetwork() as MutableLiveData<List<User>>
          return list
      }
+
 }

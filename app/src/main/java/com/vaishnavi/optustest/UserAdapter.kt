@@ -1,14 +1,15 @@
 package com.vaishnavi.optustest
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.vaishnavi.optustest.album.AlbumActivity
 import com.vaishnavi.optustest.data.User
 
 class UserAdapter(val context : Context,val list: List<User>) : RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
@@ -34,7 +35,9 @@ class UserAdapter(val context : Context,val list: List<User>) : RecyclerView.Ada
         holder.email.setText(list.get(position).email)
         holder.phone.setText(list.get(position).phone)
         holder.layout.setOnClickListener(View.OnClickListener {
-            Toast.makeText(context,"dcj",Toast.LENGTH_LONG).show()
+            val intent  = Intent(holder.layout.context,
+                AlbumActivity::class.java)
+            holder.layout.context.startActivity(intent)
         })
     }
 

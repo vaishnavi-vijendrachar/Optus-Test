@@ -23,13 +23,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        toolbar.setTitle("User Info")
 
         //set up recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager =
             LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-
-
 
         //set Up ViewModel
         val viewModel : MainViewModel = ViewModelProviders.of(this)[MainViewModel::class.java]
