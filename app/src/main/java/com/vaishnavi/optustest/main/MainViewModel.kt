@@ -1,10 +1,10 @@
-package com.vaishnavi.optustest
+package com.vaishnavi.optustest.main
 
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.vaishnavi.optustest.data.User
+import com.vaishnavi.optustest.model.User
 import com.vaishnavi.optustest.repository.Repository
 
 

@@ -4,4 +4,6 @@
     <string name="name">name</string>
     <string name="email">email</string>
     <string name="phone">phone</string>
+    <string name="title">title</string>
+    <string name="image" />
 </resources>

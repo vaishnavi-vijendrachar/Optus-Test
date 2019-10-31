@@ -1,4 +1,4 @@
-package com.vaishnavi.optustest
+package com.vaishnavi.optustest.main
 
 import android.content.Context
 import android.content.Intent
@@ -9,10 +9,11 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.vaishnavi.optustest.R
 import com.vaishnavi.optustest.album.AlbumActivity
-import com.vaishnavi.optustest.data.User
+import com.vaishnavi.optustest.model.User
 
-class UserAdapter(val context : Context,val list: List<User>) : RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
+class MainAdapter(val context : Context, val list: List<User>) : RecyclerView.Adapter<MainAdapter.UserViewHolder>(){
 
     class UserViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView){
             var name = itemView.findViewById<TextView>(R.id.name)
@@ -20,9 +21,9 @@ class UserAdapter(val context : Context,val list: List<User>) : RecyclerView.Ada
             var phone  = itemView.findViewById<TextView>(R.id.phone)
             var layout = itemView.findViewById<LinearLayout>(R.id.layout)
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserAdapter.UserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         var view : View = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false)
-        return UserAdapter.UserViewHolder(view)
+        return UserViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -30,13 +31,14 @@ class UserAdapter(val context : Context,val list: List<User>) : RecyclerView.Ada
         return list.size
     }
 
-    override fun onBindViewHolder(holder: UserAdapter.UserViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         holder.name.setText(list.get(position).name)
         holder.email.setText(list.get(position).email)
         holder.phone.setText(list.get(position).phone)
         holder.layout.setOnClickListener(View.OnClickListener {
             val intent  = Intent(holder.layout.context,
                 AlbumActivity::class.java)
+            intent.putExtra("id",list.get(position).id)
             holder.layout.context.startActivity(intent)
         })
     }

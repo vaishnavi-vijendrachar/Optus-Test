@@ -1,4 +1,4 @@
-package com.vaishnavi.optustest
+package com.vaishnavi.optustest.main
 
 import android.os.Bundle
 
@@ -10,7 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.vaishnavi.optustest.data.User
+import com.vaishnavi.optustest.R
+import com.vaishnavi.optustest.model.User
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -34,7 +35,8 @@ class MainActivity : AppCompatActivity() {
         val viewModel : MainViewModel = ViewModelProviders.of(this)[MainViewModel::class.java]
         viewModel.getUserData().observe(this, object : Observer<List<User>> {
             override fun onChanged(list: List<User>) {
-                recyclerView.adapter = UserAdapter(applicationContext, list)
+                recyclerView.adapter =
+                    MainAdapter(applicationContext, list)
             }
         })
 

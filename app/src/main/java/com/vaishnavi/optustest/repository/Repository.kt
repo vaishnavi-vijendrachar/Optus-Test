@@ -1,17 +1,19 @@
 package com.vaishnavi.optustest.repository
 
-import android.os.Handler
 import android.util.Log
-import androidx.core.os.postDelayed
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.vaishnavi.optustest.data.Album
-import com.vaishnavi.optustest.data.User
+import androidx.paging.PageKeyedDataSource
+import com.vaishnavi.optustest.MyApp
+import com.vaishnavi.optustest.model.Album
+import com.vaishnavi.optustest.model.User
+import com.vaishnavi.optustest.repository.remote.RetrofitClient
+import db.UserDatabase
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.coroutines.CoroutineContext
+import java.lang.Integer.parseInt
 
 class Repository {
 
@@ -39,6 +41,7 @@ class Repository {
                                 users.id
                             )
                             userList.add(user)
+                           // saveUserToDB(user)
                             list.value = userList
                         }
                     }
@@ -69,8 +72,9 @@ class Repository {
                                         albums.thumbnailUrl,
                                         albums.url
                                     )
-                           // var album = Album(1,1,"accusamus beatae ad facilis cum similique qui sunt","https://via.placeholder.com/600/92c95","https://via.placeholder.com/150/92c952")
+
                                     albumList.add(album)
+                                    //saveAlbumToDB(album)
                                     list.value = albumList
                                     Log.d("vish", "albumlist response size :" + albumList.size)
 
@@ -85,8 +89,16 @@ class Repository {
                  return list
             }
 
-        private fun launch(function: () -> Unit) {
-
+        private fun saveAlbumToDB(album: Album) {
+          //  MyApp.database.insertAlbum(album)
+            UserDatabase.getInstance(MyApp.context).userDao().insertAlbum(album)
         }
+
+        private fun saveUserToDB(user: User) {
+            //MyApp.database.insertUser(user)
+            UserDatabase.getInstance(MyApp.context).userDao().insertUser(user)
+        }
+
+
     }
 }
