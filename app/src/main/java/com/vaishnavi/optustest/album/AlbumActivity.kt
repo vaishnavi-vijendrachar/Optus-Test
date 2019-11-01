@@ -3,6 +3,9 @@ package com.vaishnavi.optustest.album
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -26,7 +29,11 @@ class AlbumActivity  : AppCompatActivity(){
 
         //set up toolbar
         setSupportActionBar(binding.toolbar.toolbar)
-        binding.toolbar.setTitle("Album")
+
+
+        var bar : ActionBar? = getSupportActionBar()
+        bar?.setDisplayHomeAsUpEnabled(true)
+        bar?.setTitle("Album")
 
         //get data from intent
         var intent : Intent =  getIntent()

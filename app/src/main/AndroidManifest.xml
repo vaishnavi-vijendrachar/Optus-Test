@@ -20,10 +20,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".album.AlbumActivity"
-                android:theme="@style/AppTheme.NoActionBar" >
+                android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".main.MainActivity" />
         </activity>
         <activity android:name=".photo.PhotoActivity"
             android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".album.AlbumActivity" />
         </activity>
     </application>
 
