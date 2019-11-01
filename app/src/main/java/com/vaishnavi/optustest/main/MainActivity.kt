@@ -6,28 +6,28 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vaishnavi.optustest.R
+import com.vaishnavi.optustest.databinding.ActivityMainBinding
 import com.vaishnavi.optustest.model.User
 
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity() {
-
-    lateinit var mList : List<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        var binding : ActivityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         setSupportActionBar(toolbar)
         toolbar.setTitle("User Info")
 
         //set up recycler view
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        //val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val recyclerView : RecyclerView = binding.recyclerView
         recyclerView.layoutManager =
             LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
@@ -58,25 +58,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*fun getRetrofitStuff(): List<User>{
-        var userList = ArrayList<User>()
-        GlobalScope.launch {
-            lateinit var user: User
-            val call = RetrofitClient.getRetrofitInstance().getUserDetails()
-            call.enqueue(object : Callback<List<User>> {
-                override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-                    Log.d("vish", "Retrofit Response: " + response.body()?.size)
-                    for(users : User in response.body()!!){
-                        user = User(users.name,users.phone,users.email,users.id)
-                        userList.add(users)
-                    }
-                }
-
-                override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                    t.printStackTrace()
-                }
-            })
-        }
-        return userList
-    }*/
 }

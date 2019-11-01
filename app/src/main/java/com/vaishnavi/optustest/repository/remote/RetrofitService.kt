@@ -11,8 +11,8 @@ interface RetrofitService{
     fun getUserDetails( ) : Call<List<User>>
 
     @GET("/photos")
-    fun getPhotoAlbum(@Query("albumId") albumId : Int) : Call<List<Album>>
-
-    @GET("/photos")
     fun getPhotoAlbum() : Call<List<Album>>
+
+  /*  @GET("/photos")
+    fun getPhotoAlbum(@Query("firstpage") firstpage : Int , @Query("pagesize") pagesize : Int =30 ) : Call<List<Album>>*/
 }

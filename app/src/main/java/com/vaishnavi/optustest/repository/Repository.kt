@@ -1,10 +1,11 @@
 package com.vaishnavi.optustest.repository
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
-import com.vaishnavi.optustest.MyApp
 import com.vaishnavi.optustest.model.Album
 import com.vaishnavi.optustest.model.User
 import com.vaishnavi.optustest.repository.remote.RetrofitClient
@@ -15,9 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.lang.Integer.parseInt
 
-class Repository {
-
-    //override val coroutineContext: CoroutineContext = Dispatchers.Main + SupervisorJob()
+class Repository  {
 
     companion object {
 
@@ -54,17 +53,15 @@ class Repository {
             return list
         }
 
-            fun getAlbumFromNetwork() : LiveData<List<Album>>  {
+            fun getAlbumFromNetwork(otherId : Int) : LiveData<List<Album>>  {
                 var albumList = ArrayList<Album>()
                 var list  = MutableLiveData<List<Album>>()
                 GlobalScope.launch  {
                     val call = RetrofitClient.getRetrofitInstance().getPhotoAlbum()
                     call.enqueue(object : Callback<List<Album>> {
                         override fun onResponse(call: Call<List<Album>>, response: Response<List<Album>>) {
-
-                            Log.d("vish","album response size :" + response.body()!!.size)
-
                             for (albums: Album in response.body()!!) {
+                                if(albums.albumId == otherId) {
                                     var album = Album(
                                         albums.albumId,
                                         albums.id,
@@ -72,13 +69,10 @@ class Repository {
                                         albums.thumbnailUrl,
                                         albums.url
                                     )
-
                                     albumList.add(album)
-                                    //saveAlbumToDB(album)
+                                }
+                                   // saveAlbumToDB(album, context)
                                     list.value = albumList
-                                    Log.d("vish", "albumlist response size :" + albumList.size)
-
-
                             }
                         }
                         override fun onFailure(call: Call<List<Album>>, t: Throwable) {
@@ -89,15 +83,9 @@ class Repository {
                  return list
             }
 
-        private fun saveAlbumToDB(album: Album) {
-          //  MyApp.database.insertAlbum(album)
-            UserDatabase.getInstance(MyApp.context).userDao().insertAlbum(album)
-        }
-
-        private fun saveUserToDB(user: User) {
-            //MyApp.database.insertUser(user)
-            UserDatabase.getInstance(MyApp.context).userDao().insertUser(user)
-        }
+        /*private fun saveAlbumToDB(album: Album,context: Context) {
+            UserDatabase.getInstance(context).userDao().insertAlbum(album)
+        }*/
 
 
     }

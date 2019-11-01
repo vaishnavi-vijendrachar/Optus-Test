@@ -1,5 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="user"
+            type="com.vaishnavi.optustest.model.User" />
+    </data>
+<androidx.cardview.widget.CardView
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:padding="@dimen/text_padding"
     android:elevation="2dp"
@@ -11,21 +16,21 @@
         android:orientation="vertical"
         android:id="@+id/layout">
         <TextView
-            android:text="@string/name"
+            android:text="@{user.name}"
             android:textSize="@dimen/text_size"
             android:padding="@dimen/text_padding"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/name"/>
         <TextView
-            android:text="@string/email"
+            android:text="@{user.email}"
             android:textSize="15sp"
             android:padding="8dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/email"/>
         <TextView
-            android:text="@string/phone"
+            android:text="@{user.phone}"
             android:textSize="15sp"
             android:padding="8dp"
             android:layout_gravity="center"
@@ -33,3 +38,4 @@
             android:layout_height="wrap_content" android:id="@+id/phone"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
+</layout>

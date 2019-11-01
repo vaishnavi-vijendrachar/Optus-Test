@@ -22,7 +22,7 @@
         <activity android:name=".album.AlbumActivity"
                 android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".PhotoActivity"
+        <activity android:name=".photo.PhotoActivity"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
