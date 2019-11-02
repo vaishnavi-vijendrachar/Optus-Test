@@ -29,8 +29,6 @@ class AlbumActivity  : AppCompatActivity(){
 
         //set up toolbar
         setSupportActionBar(binding.toolbar.toolbar)
-
-
         var bar : ActionBar? = getSupportActionBar()
         bar?.setDisplayHomeAsUpEnabled(true)
         bar?.setTitle("Album")

@@ -4,8 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.paging.DataSource
-import androidx.paging.PageKeyedDataSource
+
 import com.vaishnavi.optustest.model.Album
 import com.vaishnavi.optustest.model.User
 import com.vaishnavi.optustest.repository.remote.RetrofitClient
@@ -19,7 +18,6 @@ import java.lang.Integer.parseInt
 class Repository  {
 
     companion object {
-
         fun getUserDataFromNetwork(): LiveData<List<User>> {
             var userList = ArrayList<User>()
             var list = MutableLiveData<List<User>>()

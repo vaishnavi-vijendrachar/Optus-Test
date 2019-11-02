@@ -41,6 +41,7 @@ class AlbumAdapter (val context : Context, val list: List<Album>, val albumid : 
                 )
                 intent.putExtra("url",list.get(position).url)
                 intent.putExtra("title",list.get(position).title)
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 holder.albumItemBinding.layout.context.startActivity(intent)
             })
     }
