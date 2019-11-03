@@ -11,7 +11,7 @@ Live Data
 
 Retrofit Network libary is used to fetch json data fom the network
 
-Also contains test cases
+The code is unit tested
 
 
 
