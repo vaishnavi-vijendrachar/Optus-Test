@@ -1,4 +1,4 @@
-# User-Test
+# User-Info-Test
 
 Fetches User Information from API and dispalys in Recycler View.
 
