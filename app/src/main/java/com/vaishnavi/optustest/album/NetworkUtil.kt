@@ -7,6 +7,8 @@ import android.net.NetworkInfo
 
 class NetworkUtil {
     companion object{
+
+        //return true if network connection is available
         fun checkNetworkAvilablility(context: Context) : Boolean{
             val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo

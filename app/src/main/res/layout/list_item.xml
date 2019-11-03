@@ -25,16 +25,16 @@
             android:layout_height="wrap_content" android:id="@+id/name"/>
         <TextView
             android:text="@{user.email}"
-            android:textSize="15sp"
-            android:padding="8dp"
+            android:textSize="@dimen/text_size"
+            android:padding="@dimen/layout_padding"
             android:textColor="@color/white"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/email"/>
         <TextView
             android:text="@{user.phone}"
-            android:textSize="15sp"
-            android:padding="8dp"
+            android:textSize="@dimen/text_size"
+            android:padding="@dimen/layout_padding"
             android:textColor="@color/white"
             android:layout_gravity="center"
             android:layout_width="match_parent"

@@ -72,7 +72,7 @@ class AlbumActivity  : AppCompatActivity(){
                 }
             })
         }else{
-            Toast.makeText(applicationContext,"No Network Connection!",Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,getString(R.string.no_network),Toast.LENGTH_SHORT).show()
             binding.swipe.setRefreshing(false)
         }
     }

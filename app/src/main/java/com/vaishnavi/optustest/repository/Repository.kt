@@ -34,7 +34,6 @@ class Repository  {
                                 users.id
                             )
                             userList.add(user)
-                           // saveUserToDB(user)
                             list.value = userList
                         }
                     }
@@ -65,7 +64,7 @@ class Repository  {
                                     )
                                     albumList.add(album)
                                 }
-                                   // saveAlbumToDB(album, context)
+
                                     list.value = albumList
                             }
                         }
@@ -76,11 +75,5 @@ class Repository  {
                 }
                  return list
             }
-
-        /*private fun saveAlbumToDB(album: Album,context: Context) {
-            UserDatabase.getInstance(context).userDao().insertAlbum(album)
-        }*/
-
-
     }
 }

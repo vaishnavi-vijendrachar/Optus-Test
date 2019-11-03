@@ -31,7 +31,6 @@ class AlbumAdapter (val context : Context, val list: List<Album>, val albumid : 
     }
 
     override fun onBindViewHolder(holder: AlbumAdapter.AlbumViewHolder, position: Int) {
-        Log.d("vish","album adapter:" +list.get(position).albumId+"=="+albumid )
             holder.albumItemBinding.album = Album(list.get(position).albumId,list.get(position).id
                 ,list.get(position).title,list.get(position).thumbnailUrl,list.get(position).url)
             holder.albumItemBinding.layout.setOnClickListener(View.OnClickListener {

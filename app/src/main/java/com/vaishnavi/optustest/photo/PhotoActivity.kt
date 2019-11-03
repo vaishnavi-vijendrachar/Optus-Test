@@ -30,16 +30,6 @@ class PhotoActivity : AppCompatActivity() {
         var intentUrl = intent.getStringExtra("url")
         var intentTitle = intent.getStringExtra("title")
 
-        //var photo = findViewById<ImageView>(R.id.photo)
-        //var title = findViewById<TextView>(R.id.title)
-
-
-           /* with(applicationContext)
-                .load(intentUrl)
-                .centerCrop()
-                .skipMemoryCache(false)
-                .into(photo)
-*/
         var photo = Photo(intentTitle,intentUrl)
         binding.photo = photo
 
