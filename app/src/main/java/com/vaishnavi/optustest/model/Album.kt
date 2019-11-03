@@ -18,5 +18,7 @@ class Album(@PrimaryKey var albumId : Int, var id : Int, var title: String, var 
                 .into(imageView)
         }
 
+
+
     }
 }

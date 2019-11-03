@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.vaishnavi.optustest.model.User
 import com.vaishnavi.optustest.repository.Repository
+import kotlinx.coroutines.CoroutineScope
 import org.jetbrains.annotations.TestOnly
 
 

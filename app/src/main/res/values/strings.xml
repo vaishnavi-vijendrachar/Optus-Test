@@ -7,4 +7,7 @@
     <string name="title">title</string>
     <string name="image" />
     <string name="user_info">User Info</string>
+    <string name="Photo">Photo</string>
+    <string name="photos">Photos</string>
+    <string name="album">Album</string>
 </resources>
