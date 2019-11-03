@@ -39,7 +39,7 @@
             android:layout_height="400dp"
             android:layout_margin="4dp"
             android:padding="4dp"
-            android:background="@drawable/ic_launcher_foreground"
+            android:background="@drawable/placeholder"
             bind:url="@{photo.url}" />
 
 
@@ -48,8 +48,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:id="@+id/title"
-        android:layout_margin="4dp"
-        android:padding="4dp"
+        android:layout_margin="8dp"
+        android:padding="8dp"
         android:textSize="15sp"
         android:textColor="#FFFFFF"
         android:background="@color/colorPrimaryDark"

@@ -1,19 +1,15 @@
 package com.vaishnavi.optustest.repository
 
-import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-
 import com.vaishnavi.optustest.model.Album
 import com.vaishnavi.optustest.model.User
 import com.vaishnavi.optustest.repository.remote.RetrofitClient
-import db.UserDatabase
-import kotlinx.coroutines.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Integer.parseInt
 
 class Repository  {
 

@@ -22,7 +22,7 @@
             android:padding="@dimen/text_padding"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@drawable/ic_launcher_foreground"
+            android:background="@drawable/placeholder"
             android:layout_width="150dp"
             android:layout_height="150dp" android:id="@+id/image"/>
         <TextView
