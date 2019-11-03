@@ -31,6 +31,7 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </com.google.android.material.appbar.AppBarLayout>
+    </LinearLayout>
 
         <ImageView
             android:id="@+id/photoUrl"
@@ -40,7 +41,7 @@
             android:padding="4dp"
             android:background="@drawable/ic_launcher_foreground"
             bind:url="@{photo.url}" />
-    </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"

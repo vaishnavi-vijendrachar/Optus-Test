@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_album.view.*
 
 class AlbumActivity  : AppCompatActivity(){
 
-
+    lateinit var viewModel : AlbumViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,23 +39,42 @@ class AlbumActivity  : AppCompatActivity(){
         recyclerView.layoutManager =
             LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
-
         //set Up ViewModel and observe live data
-        if(NetworkUtil.checkNetworkAvilablility(this)) {
-            setUpViewModel(recyclerView, albumId)
-        }else{
-            Toast.makeText(applicationContext,"No Network Connection!", Toast.LENGTH_SHORT).show()
-        }
+        setUpViewModel(binding, albumId)
+
+        //set up refresh button
+        setUpRefresh(binding,albumId)
+
+        //fetch data
+        fetchData(binding,albumId,viewModel )
 
     }
 
-    private fun setUpViewModel(recyclerView: RecyclerView, albumId: Int) {
-        val viewModel : AlbumViewModel = ViewModelProviders.of(this)[AlbumViewModel::class.java]
-        viewModel.getAlbum(albumId).observe(this, object : Observer<List<Album>> {
-            override fun onChanged(list: List<Album>) {
-                recyclerView.adapter = AlbumAdapter(applicationContext, list, albumId)
-            }
-        })
+    private fun setUpRefresh(binding: ActivityAlbumBinding, albumId: Int) {
+        binding.swipe.setColorSchemeColors(resources.getColor(R.color.colorAccent))
+        binding.swipe.setOnRefreshListener {
+            fetchData(binding,albumId,viewModel ) //refresh list
+        }
+    }
+    private fun setUpViewModel(binding: ActivityAlbumBinding , albumId: Int) {
+        viewModel = ViewModelProviders.of(this)[AlbumViewModel::class.java]
+        fetchData(binding,albumId,viewModel)
+
+    }
+
+    private fun fetchData(binding : ActivityAlbumBinding, albumId: Int, viewModel: AlbumViewModel) {
+        binding.swipe.setRefreshing(true)
+        if(NetworkUtil.checkNetworkAvilablility(this)) {
+            viewModel.getAlbum(albumId).observe(this, object : Observer<List<Album>> {
+                override fun onChanged(list: List<Album>) {
+                    binding.albumRecyclerView.adapter = AlbumAdapter(applicationContext, list, albumId)
+                    binding.swipe.setRefreshing(false)
+                }
+            })
+        }else{
+            Toast.makeText(applicationContext,"No Network Connection!",Toast.LENGTH_SHORT).show()
+            binding.swipe.setRefreshing(false)
+        }
     }
 
 
